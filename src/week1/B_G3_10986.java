@@ -1,19 +1,18 @@
+package week1;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
-import static java.lang.Math.max;
-
-public class B_S1_20922 {
+public class B_G3_10986 {
     final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    int MAX_VAL = 100001;
     int[] arr;
     long ans;
     int n;
     int m;
 
     public static void main(String[] args) throws IOException {
-        B_S1_20922 solve = new B_S1_20922();
+        B_G3_10986 solve = new B_G3_10986();
         solve.init();
     }
 
@@ -24,23 +23,23 @@ public class B_S1_20922 {
     }
 
     public void solve() {
-        int[] count = new int[MAX_VAL];
-        int left = 0;
-        int right = 0;
+        int[] prefixRemainder = new int[n];
 
-        int val;
-        while (left <= right && right <n) {
-            val = arr[right++];
-            if (++count[val] <= m) {
-                ans = max(ans, right - left);
-            } else {
-                while(count[val] > m){
-                    int prev = arr[left++];
-                    count[prev]--;
-
-                }
-            }
+        prefixRemainder[0] = arr[0];
+        prefixRemainder[0] %= m;
+        for (int i = 1; i < n; i++) {
+            prefixRemainder[i] += arr[i] + prefixRemainder[i - 1];
+            prefixRemainder[i] %= m;
         }
+        long[] count = new long[m];
+        for (int i = 0; i < n; i++) {
+            count[prefixRemainder[i]]++;
+        }
+
+        for (int i = 0; i < m; i++) {
+            ans += count[i] * (count[i] - 1) / 2;
+        }
+        ans += count[0];
     }
 
 

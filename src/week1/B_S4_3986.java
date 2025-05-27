@@ -1,16 +1,19 @@
+package week1;
+
 import java.io.*;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class B_G3_10986 {
+public class B_S4_3986 {
     final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    int[] arr;
+    String[] arr;
     long ans;
     int n;
     int m;
 
     public static void main(String[] args) throws IOException {
-        B_G3_10986 solve = new B_G3_10986();
+        B_S4_3986 solve = new B_S4_3986();
         solve.init();
     }
 
@@ -21,23 +24,23 @@ public class B_G3_10986 {
     }
 
     public void solve() {
-        int[] prefixRemainder = new int[n];
+        Stack<Integer> stack = new Stack<>();
 
-        prefixRemainder[0] = arr[0];
-        prefixRemainder[0] %= m;
-        for (int i = 1; i < n; i++) {
-            prefixRemainder[i] += arr[i] + prefixRemainder[i - 1];
-            prefixRemainder[i] %= m;
-        }
-        long[] count = new long[m];
-        for (int i = 0; i < n; i++) {
-            count[prefixRemainder[i]]++;
+        ans = n;
+        for (String str : arr) {
+            for(int i=0; i<str.length(); i++) {
+                int idxValue = str.charAt(i)-'A';
+                if(stack.empty() || stack.peek() != idxValue)
+                    stack.push(idxValue);
+                else if (stack.peek() == idxValue)
+                    stack.pop();
+            }
+            if(!stack.empty()){
+                ans--;
+                stack.clear();
+            }
         }
 
-        for (int i = 0; i < m; i++) {
-            ans += count[i] * (count[i] - 1) / 2;
-        }
-        ans += count[0];
     }
 
 
@@ -52,12 +55,11 @@ public class B_G3_10986 {
     public void input() {
         StringTokenizer st = readLine();
         n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
 
-        arr = new int[n];
-        st = readLine();
+        arr = new String[n];
         for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+            st = readLine();
+            arr[i] = st.nextToken();
         }
     }
 
