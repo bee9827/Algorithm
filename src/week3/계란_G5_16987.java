@@ -29,7 +29,7 @@ BF일 경우
 7! < 10^6
  */
 
-public class B_G5_계란_16987 {
+public class 계란_G5_16987 {
     final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -39,7 +39,7 @@ public class B_G5_계란_16987 {
     List<Egg> eggs = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        B_G5_계란_16987 solve = new B_G5_계란_16987();
+        계란_G5_16987 solve = new 계란_G5_16987();
         solve.init();
     }
 
