@@ -1,17 +1,18 @@
+package week3;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 /*
-기본 아이디어: 돌면서 탐색
-
-O(N^2)
+기본 아이디어: 각 노드마다 BFS 실행
+O(N * M)
  */
 
-public class Main {
+public class 해킹_S1_1325 {
     final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -20,11 +21,10 @@ public class Main {
     int m;
     List<Integer>[] edge;
     List<Integer> ansList = new ArrayList<>();
-    int[] dp;
 
 
     public static void main(String[] args) throws IOException {
-        Main solve = new Main();
+        해킹_S1_1325 solve = new 해킹_S1_1325();
         solve.init();
     }
 
@@ -70,12 +70,8 @@ public class Main {
 
     public void solve() throws IOException {
         int ansCount = 0;
-        dp = new int[n + 1];
-
-        Arrays.fill(dp, -1);
-
         for (int i = 1; i <= n; i++) {
-            int count = dfs(i, edge);
+            int count = bfs(i, edge);
             if (ansCount < count) {
                 ansList.clear();
                 ansCount = count;
@@ -94,19 +90,6 @@ public class Main {
         );
     }
 
-    public int dfs(int i, List<Integer>[] edge) {
-        if (dp[i] != -1) return dp[i];
-
-        List<Integer> nextNodes = edge[i];
-        if(nextNodes == null) return dp[i] = 0;
-
-        for(int nextNode : nextNodes) {
-            
-        }
-
-    }
-
-    /*
     public int bfs(int i, List<Integer>[] edge) {
         LinkedList<Integer> queue = new LinkedList<>();
         boolean[] visited = new boolean[n + 1];
@@ -132,5 +115,4 @@ public class Main {
 
         return count;
     }
-     */
 }
