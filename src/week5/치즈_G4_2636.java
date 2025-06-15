@@ -127,15 +127,15 @@ public class 치즈_G4_2636 {
         return nx >= 0 && nx < n && ny >= 0 && ny < m;
     }
 
-    private boolean isEdgeCheese(int x, int y) {
-        for (int i = 0; i < 4; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
-
-            if (board[nx][ny] == EMPTY) return true;
-        }
-        return false;
-    }
+//    private boolean isEdgeCheese(int x, int y) {
+//        for (int i = 0; i < 4; i++) {
+//            int nx = x + dx[i];
+//            int ny = y + dy[i];
+//
+//            if (board[nx][ny] == EMPTY) return true;
+//        }
+//        return false;
+//    }
 
     private class Point {
         int x, y;

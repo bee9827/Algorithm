@@ -63,6 +63,37 @@ public class 외판원순회2_S2_10971 {
         bw.write(String.valueOf(ans));
     }
 
+
+    /*
+    N*N*N*....*N
+
+    O(N^N)
+
+    next_permutation
+
+
+    1,2,3,4,5
+    1,2,3,5,4
+    1,2,4,3,5
+    1,2,4,5,3
+
+
+
+
+    arr[N]
+
+
+    [0,1,0,1,0,1,1,1,1,1,...1]
+
+    1개
+
+    for(int i=0; i<n; i++){
+        if(arr[i] == 1) count++;
+    }
+
+    N!
+    */
+
     public void dfs(int[][] edge, boolean[] visited, int start, int curr, int depth, int cost) {
         if (depth == n - 1) {
             if (edge[curr][start] != 0) ans = Math.min(ans, cost + edge[curr][start]);
@@ -76,8 +107,6 @@ public class 외판원순회2_S2_10971 {
             dfs(edge, visited, start, nextNode, depth + 1, cost + edge[curr][nextNode]);
             visited[nextNode] = false;
         }
-
-
     }
 
 

@@ -58,7 +58,6 @@ public class 오목_S1_2615 {
     }
 
     public void solve() throws IOException {
-
         for (int j = 0; j < SIZE; j++) {
             for (int i = 0; i < SIZE; i++) {
                 if (board[i][j] != BLANK && isWinner(i, j)) {
@@ -81,23 +80,23 @@ public class 오목_S1_2615 {
                 || positiveDiagonal == WINNER_COUNT
                 || negativeDiagonal == WINNER_COUNT;
     }
-
-    private int getMaxCount(int i, int j) {
-        return max(
-                getDirectionCount(i, j, 1, 0), // 아래 방향
-                getDirectionCount(i, j, 0, 1), // 오른쪽 방향
-                getDirectionCount(i, j, 1, 1), // 우하
-                getDirectionCount(i, j, -1, 1) // 우상
-        );
-    }
-
-    private int max(int... values) {
-        int ret = 0;
-        for (int value : values) {
-            ret = Math.max(ret, value);
-        }
-        return ret;
-    }
+//
+//    private int getMaxCount(int i, int j) {
+//        return max(
+//                getDirectionCount(i, j, 1, 0), // 아래 방향
+//                getDirectionCount(i, j, 0, 1), // 오른쪽 방향
+//                getDirectionCount(i, j, 1, 1), // 우하
+//                getDirectionCount(i, j, -1, 1) // 우상
+//        );
+//    }
+//
+//    private int max(int... values) {
+//        int ret = 0;
+//        for (int value : values) {
+//            ret = Math.max(ret, value);
+//        }
+//        return ret;
+//    }
 
     private int getDirectionCount(int x, int y, int dx, int dy) {
         int value = board[x][y];

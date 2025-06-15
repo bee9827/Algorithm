@@ -8,9 +8,6 @@ import java.util.StringTokenizer;
  */
 
 public class 달팽이_S3_1913 {
-    private static final int CHEESE = 1;
-    private static final int EMPTY = 0;
-    private static final int EDGE_CHEESE = 2;
     final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
